@@ -28,7 +28,7 @@ export default function Booklist() {
     return (
         <section className="booklist">
            {books.map((book) => {
-            return <Book key={book.id} book={book}/>
+            return <Book key={book.id} {...book}/>
            })}
         </section>
     )
@@ -36,7 +36,7 @@ export default function Booklist() {
 
 const Book = (props) => {
     console.log(props)
-    const {title, author, image} = props.book;
+    const {title, author, image} = props;
     return <article className="book">
         <img src={image} alt="Harry Potter Complete Box Set"/>
         {/* Inline styling: camelCase, JS Object, overrides all other stylings */}
