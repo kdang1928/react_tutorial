@@ -1,9 +1,11 @@
-import Greeting from './component/greeting'
+import Booklist from './component/booklist';
+// import Greeting from './component/greeting'
 
 function App() {
   return (
     <>
-    <Greeting/>
+    {/* <Greeting/> */}
+    <Booklist/>
     </>
   );
 }
