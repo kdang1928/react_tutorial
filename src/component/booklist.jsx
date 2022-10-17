@@ -3,24 +3,31 @@ import React from "react";
 // CSS
 import '../index.css'
 
+const books = [
+    {
+        title:'Harry Potter Hogwarts Library', 
+        author: 'J.K. Rowling', 
+        image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/41UjBn+cYtL._SX258_BO1,204,203,200_.jpg'
+    },
+    {
+        title:'Percy Jackson and the Olympians Box Set', 
+        author: 'Rick Riordan', 
+        image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/41d3Xl4fSFS._SX218_BO1,204,203,200_QL40_FMwebp_.jpg'
+    },
+    {
+        title:'The Alchemist', 
+        author: 'Paul Coelho', 
+        image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51kcX5PpaZL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg'
+    },
+]
+
 export default function Booklist() {
     return (
         <section className="booklist">
-           <Book 
-            title='Harry Potter Hogwarts Library' 
-            author = 'J.K. Rowling' 
-            image = 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/41UjBn+cYtL._SX258_BO1,204,203,200_.jpg'
-           />
-           <Book 
-            title='Percy Jackson and the Olympians Box Set' 
-            author = 'Rick Riordan' 
-            image = 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/41d3Xl4fSFS._SX218_BO1,204,203,200_QL40_FMwebp_.jpg'
-           />
-           <Book 
-            title='The Alchemist' 
-            author = 'Paul Coelho' 
-            image = 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51kcX5PpaZL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg'
-           />
+           {books.map((book) => {
+            const {title, author, image} = book;
+            return <Book title={title} author={author} image={image}/>
+           })}
         </section>
     )
 }
