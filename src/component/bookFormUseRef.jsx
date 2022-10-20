@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import { useRef, useContext } from "react";
 import { BookContext } from "../App";
 
-export default function AddBookForm() {
+export default function BookFormUseRef() {
   const [booklist, setBookList] = useContext(BookContext);
-  const [formData, setFormData] = useState({
+  const formData = useRef({
     title: "Howl's Moving Castle",
     author: "Diana Wynne Jones",
     image:
@@ -11,33 +11,34 @@ export default function AddBookForm() {
   });
 
   const addBook = (e) => {
-    e.preventDefault(); // Necessary to prevent refresh that resets change
-    setBookList([...booklist, formData]);
+    e.preventDefault();
+    console.log(formData.current);
+    setBookList([...booklist, formData.current]);
   };
 
   return (
     <div>
-      <h1>Add a Book!</h1>
+      <h1>Add a Book! (uses UseRef)</h1>
       <form>
         {" "}
         {/* alt: can add onSubmit and change button type to submit */}
         <label>Title:</label>
         <input
           placeholder="Title"
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          value={formData.title}
+          ref={formData.title}
+          value={formData.current.title}
         />
         <label>Author:</label>
         <input
           placeholder="Author"
-          onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-          value={formData.author}
+          ref={formData.author}
+          value={formData.current.author}
         />
         <label>Image URL:</label>
         <input
           placeholder="Image URL"
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-          value={formData.image}
+          ref={formData.image}
+          value={formData.current.image}
         />
         <button
           onClick={(e) => {
